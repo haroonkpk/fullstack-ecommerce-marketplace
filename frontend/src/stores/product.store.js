@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { axiosInstance } from "../lib/axios";
 
 export const useProductStore = create((set, get) => ({
   selectedProduct: [],
@@ -461,4 +462,11 @@ export const useProductStore = create((set, get) => ({
         : set({ selectedCategory: products });
     }
   },
+
+
+  getAllPro: async()=>{
+    const res= await axiosInstance.get("/product/")
+    console.log(res.data.products);
+    
+  }
 }));
