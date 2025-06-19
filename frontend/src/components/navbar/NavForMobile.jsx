@@ -37,7 +37,7 @@ export default function NavForMobile() {
           {items.map((itm, i) => (
             <input
               key={i}
-              onChange={handleChange}
+              onClick={handleChange}
               className="btn bg-[#EFF2F4] text-blue-600"
               type="radio"
               name="frameworks"

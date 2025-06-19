@@ -10,13 +10,13 @@ export default function ContentTop({ products }) {
         <span className="font-bold">{products?.[0]?.category} category</span>
       </div>
       <div data-theme="light">
-        <label className="label">
+        <label className="flex items-center gap-2 cursor-pointer">
           <input
             type="checkbox"
             defaultChecked
             className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
           />
-          Verified only
+          <span>Verified only</span>
         </label>
       </div>
       <div>

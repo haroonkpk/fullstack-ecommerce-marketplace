@@ -463,10 +463,15 @@ export const useProductStore = create((set, get) => ({
     }
   },
 
+  products: [],
 
-  getAllPro: async()=>{
-    const res= await axiosInstance.get("/product/")
-    console.log(res.data.products);
-    
-  }
+  getAllProducts: async () => {
+    const { products } = get();
+    const res = await axiosInstance.get("/product/");
+    set({ products: res.data.products });
+  },
+  createProduct: async (formData) => {
+    const res = await axiosInstance.post("/product/", formData);
+    console.log("product created",res.data)
+  },
 }));

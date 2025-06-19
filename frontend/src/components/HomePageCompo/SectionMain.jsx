@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAuthStore } from "../../stores/auth.store";
 
 export default function SectionMain() {
+const{checkAuth,authUser}=useAuthStore();
   const items = [
     "Automobiles",
     "Clothes and wear",
@@ -56,18 +58,39 @@ export default function SectionMain() {
             <div className="max-w-11 max-h-11 rounded-full overflow-hidden">
               <img src="/avatar=pic1.jpg" alt="" />
             </div>
-            <div className="flex flex-col justify-center gap-y-0 leading-4 ">
-              <span className="">Hi user</span>
-              <span className="">let's get started</span>
+            <div className="h-11 flex flex-col justify-center relative  gap-y-0 leading-4 ">
+              <span className="">{authUser?.username || "Hi user"}</span>
+              {!authUser &&(<span className="">
+                let's get started
+              </span>)}
             </div>
           </div>
-
-          <button className="btn btn-sm w-full py-4 border border-gray-300 bg-blue-600 text-white rounded text-sm">
+          {!authUser ? (
+            <>
+          <button
+            onClick={() => {
+              !authUser && document.getElementById("my_modal_3").showModal();
+            }}
+            className="btn btn-sm w-full py-4 border border-gray-300 bg-blue-600 text-white rounded text-sm"
+          >
             Join now
           </button>
-          <button className="btn btn-sm w-full border border-gray-300 py-4  text-blue-600 bg-white rounded text-sm">
+          <button
+            onClick={() => {
+              !authUser
+                ? document.getElementById("my_modal_3").showModal()
+                : "";
+            }}
+            className="btn btn-sm w-full border border-gray-300 py-4  text-blue-600 bg-white rounded text-sm"
+          >
             Join now
           </button>
+          </>
+          ):(
+            <span className="w-full">
+              {authUser?.email}
+            </span>
+          )}
         </div>
         <div className="w-full h-[95px] relative bg-[#F38332] text-white rounded p-3">
           <p className="w-[144px]">Get US $10 off with a new supplier</p>

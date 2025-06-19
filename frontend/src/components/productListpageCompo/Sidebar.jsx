@@ -14,30 +14,30 @@ export default function Sidebar() {
         </div>
         <ul className="collapse-content">
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             Mobile accessory
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             Electronics
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             Smartphones{" "}
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             Modern tech
           </li>
-          <li href="" className="text-[#0D6EFD]">
+          <li href="#" className="text-[#0D6EFD]">
             See all
           </li>
         </ul>
@@ -50,7 +50,7 @@ export default function Sidebar() {
         </div>
         <ul className="collapse-content">
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -63,7 +63,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -76,7 +76,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -89,7 +89,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -102,7 +102,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -114,7 +114,7 @@ export default function Sidebar() {
               Lenovo
             </label>
           </li>
-          <li href="" className="text-[#0D6EFD]">
+          <li href="#" className="text-[#0D6EFD]">
             See all
           </li>
         </ul>
@@ -127,7 +127,7 @@ export default function Sidebar() {
         </div>
         <ul className="collapse-content">
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -140,7 +140,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -153,7 +153,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -166,7 +166,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -179,7 +179,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -191,7 +191,7 @@ export default function Sidebar() {
               Large Memory
             </label>
           </li>
-          <li href="" className="text-[#0D6EFD]">
+          <li href="#" className="text-[#0D6EFD]">
             See all
           </li>
         </ul>
@@ -203,7 +203,7 @@ export default function Sidebar() {
           <ChevronDown />
         </div>
         <ul className="collapse-content">
-          <li href="" className=" p-1 rounded">
+          <li href="#" className=" p-1 rounded">
             <div className="w-full max-w-xs">
               <input
                 type="range"
@@ -262,7 +262,7 @@ export default function Sidebar() {
         </div>
         <ul className="collapse-content">
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -283,7 +283,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -304,7 +304,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -325,7 +325,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -355,7 +355,7 @@ export default function Sidebar() {
         </div>
         <ul className="collapse-content">
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -372,32 +372,32 @@ export default function Sidebar() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M83.6999 14.4663L89.4473 18L87.9221 11.34L92.9999 6.85895L86.3132 6.28105L83.6999 0L81.0866 6.28105L74.3999 6.85895L79.4777 11.34L77.9525 18L83.6999 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M65.1 14.4663L70.8475 18L69.3223 11.34L74.4001 6.85895L67.7134 6.28105L65.1 0L62.4867 6.28105L55.8 6.85895L60.8778 11.34L59.3526 18L65.1 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M46.5 14.4663L52.2474 18L50.7221 11.34L55.7999 6.85895L49.1133 6.28105L46.5 0L43.8867 6.28105L37.2 6.85895L42.2778 11.34L40.7526 18L46.5 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M27.9001 14.4663L33.6475 18L32.1223 11.34L37.2001 6.85895L30.5134 6.28105L27.9001 0L25.2868 6.28105L18.6001 6.85895L23.6779 11.34L22.1527 18L27.9001 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M9.3 14.4663L15.0474 18L13.5222 11.34L18.6 6.85895L11.9133 6.28105L9.3 0L6.6867 6.28105L0 6.85895L5.0778 11.34L3.5526 18L9.3 14.4663Z"
                   fill="#FF9017"
                 />
@@ -405,7 +405,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -422,32 +422,32 @@ export default function Sidebar() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M83.6999 14.4663L89.4473 18L87.9221 11.34L92.9999 6.85895L86.3132 6.28105L83.6999 0L81.0866 6.28105L74.3999 6.85895L79.4777 11.34L77.9525 18L83.6999 14.4663Z"
                   fill="#BDC4CD"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M65.1 14.4663L70.8475 18L69.3223 11.34L74.4001 6.85895L67.7134 6.28105L65.1 0L62.4867 6.28105L55.8 6.85895L60.8778 11.34L59.3526 18L65.1 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M46.5 14.4663L52.2474 18L50.7221 11.34L55.7999 6.85895L49.1133 6.28105L46.5 0L43.8867 6.28105L37.2 6.85895L42.2778 11.34L40.7526 18L46.5 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M27.9001 14.4663L33.6475 18L32.1223 11.34L37.2001 6.85895L30.5134 6.28105L27.9001 0L25.2868 6.28105L18.6001 6.85895L23.6779 11.34L22.1527 18L27.9001 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M9.3 14.4663L15.0474 18L13.5222 11.34L18.6 6.85895L11.9133 6.28105L9.3 0L6.6867 6.28105L0 6.85895L5.0778 11.34L3.5526 18L9.3 14.4663Z"
                   fill="#FF9017"
                 />
@@ -455,7 +455,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -472,32 +472,32 @@ export default function Sidebar() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M83.6999 14.4663L89.4473 18L87.9221 11.34L92.9999 6.85895L86.3132 6.28105L83.6999 0L81.0866 6.28105L74.3999 6.85895L79.4777 11.34L77.9525 18L83.6999 14.4663Z"
                   fill="#BDC4CD"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M65.1 14.4663L70.8475 18L69.3223 11.34L74.4001 6.85895L67.7134 6.28105L65.1 0L62.4867 6.28105L55.8 6.85895L60.8778 11.34L59.3526 18L65.1 14.4663Z"
                   fill="#BDC4CD"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M46.5 14.4663L52.2474 18L50.7221 11.34L55.7999 6.85895L49.1133 6.28105L46.5 0L43.8867 6.28105L37.2 6.85895L42.2778 11.34L40.7526 18L46.5 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M27.9001 14.4663L33.6475 18L32.1223 11.34L37.2001 6.85895L30.5134 6.28105L27.9001 0L25.2868 6.28105L18.6001 6.85895L23.6779 11.34L22.1527 18L27.9001 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M9.3 14.4663L15.0474 18L13.5222 11.34L18.6 6.85895L11.9133 6.28105L9.3 0L6.6867 6.28105L0 6.85895L5.0778 11.34L3.5526 18L9.3 14.4663Z"
                   fill="#FF9017"
                 />
@@ -505,7 +505,7 @@ export default function Sidebar() {
             </label>
           </li>
           <li
-            href=""
+            href="#"
             className=" p-1 cursor-pointer rounded hover:bg-blue-200 hover:text-black"
           >
             <label className="label">
@@ -522,32 +522,32 @@ export default function Sidebar() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M83.6999 14.4663L89.4473 18L87.9221 11.34L92.9999 6.85895L86.3132 6.28105L83.6999 0L81.0866 6.28105L74.3999 6.85895L79.4777 11.34L77.9525 18L83.6999 14.4663Z"
                   fill="#BDC4CD"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M65.1 14.4663L70.8475 18L69.3223 11.34L74.4001 6.85895L67.7134 6.28105L65.1 0L62.4867 6.28105L55.8 6.85895L60.8778 11.34L59.3526 18L65.1 14.4663Z"
                   fill="#BDC4CD"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M46.5 14.4663L52.2474 18L50.7221 11.34L55.7999 6.85895L49.1133 6.28105L46.5 0L43.8867 6.28105L37.2 6.85895L42.2778 11.34L40.7526 18L46.5 14.4663Z"
                   fill="#BDC4CD"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M27.9001 14.4663L33.6475 18L32.1223 11.34L37.2001 6.85895L30.5134 6.28105L27.9001 0L25.2868 6.28105L18.6001 6.85895L23.6779 11.34L22.1527 18L27.9001 14.4663Z"
                   fill="#FF9017"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M9.3 14.4663L15.0474 18L13.5222 11.34L18.6 6.85895L11.9133 6.28105L9.3 0L6.6867 6.28105L0 6.85895L5.0778 11.34L3.5526 18L9.3 14.4663Z"
                   fill="#FF9017"
                 />

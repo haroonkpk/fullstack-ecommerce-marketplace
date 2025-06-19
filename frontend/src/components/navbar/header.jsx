@@ -1,8 +1,11 @@
 import { Menu } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../stores/auth.store";
 
 export default function Header() {
+  const { authUser, checkAuth } = useAuthStore();
+
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState(
     "/category/AllCategory"
@@ -17,7 +20,6 @@ export default function Header() {
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
   };
-  console.log(selectedCategory);
 
   return (
     <>
@@ -76,7 +78,14 @@ export default function Header() {
           <div>
             <ul className="w-auto h-auto menu menu-xs md:menu-xs  p-0 menu-horizontal rounded-box ">
               <li>
-                <div className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 ">
+                <div
+                  onClick={() => {
+                    !authUser
+                      ? document.getElementById("my_modal_3").showModal()
+                      : document.getElementById("my_modal_4").showModal();
+                  }}
+                  className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 "
+                >
                   <svg
                     width="20"
                     height="19"
@@ -96,7 +105,14 @@ export default function Header() {
                 </div>
               </li>
               <li>
-                <div className="hidden md:flex  flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 ">
+                <div
+                  onClick={() => {
+                    !authUser
+                      ? document.getElementById("my_modal_3").showModal()
+                      : "";
+                  }}
+                  className="hidden md:flex  flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 "
+                >
                   <svg
                     width="20"
                     height="20"
@@ -116,7 +132,14 @@ export default function Header() {
                 </div>
               </li>
               <li>
-                <div className="hidden md:flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 ">
+                <div
+                  onClick={() => {
+                    !authUser
+                      ? document.getElementById("my_modal_3").showModal()
+                      : "";
+                  }}
+                  className="hidden md:flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 "
+                >
                   <svg
                     width="20"
                     height="18"
@@ -136,7 +159,14 @@ export default function Header() {
                 </div>
               </li>
               <li>
-                <div className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 ">
+                <div
+                  onClick={() => {
+                    !authUser
+                      ? document.getElementById("my_modal_3").showModal()
+                      : "";
+                  }}
+                  className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 "
+                >
                   <svg
                     width="21"
                     height="21"

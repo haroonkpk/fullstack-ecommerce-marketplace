@@ -10,26 +10,25 @@ export default function HeaderForOtherPages() {
     <>
       <div className="md:hidden navbar w-full h-auto flex items-center justify-between bg-base-100">
         <div className="flex gap-3">
-          {location.pathname === "/" ?(
-
+          {location.pathname === "/" ? (
             <div className="flex items-center">
-          <label
-            htmlFor="my-drawer"
-            className="flex md:hidden btn bg-base-100 border-0 active:bg-blue-600 active:text-white drawer-button"
-            >
-            <Menu />
-          </label>
-          <img src="Brand/logo-colored.jpg" alt="" />
-        </div> 
-        ):(
-          <>
-          <Link to={"/"}>
-            <ArrowLeft />
-          </Link>
-          <span className="font-bold text-lg uppercase">
-            {selectedCategory?.[0]?.category} category
-          </span>
-          </>
+              <label
+                htmlFor="my-drawer"
+                className="flex md:hidden btn bg-base-100 border-0 active:bg-blue-600 active:text-white drawer-button"
+              >
+                <Menu />
+              </label>
+              <img src="Brand/logo-colored.jpg" alt="Brand Logo" />
+            </div>
+          ) : (
+            <>
+              <Link to={"/"}>
+                <ArrowLeft />
+              </Link>
+              <span className="font-bold text-lg uppercase">
+                {selectedCategory?.[0]?.category || ""} category
+              </span>
+            </>
           )}
         </div>
         <ul className="w-auto h-auto menu menu-xs md:menu-xs  p-0 menu-horizontal rounded-box">

@@ -8,11 +8,8 @@ import SectionService from "../components/HomePageCompo/SectionService";
 import SectionCountry from "../components/HomePageCompo/SectionCountry";
 import Newsletter from "../components/Newsletter";
 import NavForMobile from "../components/navbar/NavForMobile";
-import { useProductStore } from "../stores/product.store";
 
 export default function HomePage() {
- const { getAllPro } = useProductStore()
- getAllPro()
   return (
     <div
       data-theme="winter"

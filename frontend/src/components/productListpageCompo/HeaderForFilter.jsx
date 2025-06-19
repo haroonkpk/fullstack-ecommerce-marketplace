@@ -26,6 +26,7 @@ export default function HeaderForFilter() {
         <span>Filter (3)</span>
         <span>
           <svg
+            aria-hidden="true"
             width="18"
             height="18"
             viewBox="0 0 18 18"
