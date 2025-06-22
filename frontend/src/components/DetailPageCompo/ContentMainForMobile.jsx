@@ -3,13 +3,14 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import MobileDescription from "./DescForMobile";
 import { useParams } from "react-router-dom";
 import { useProductStore } from "../../stores/product.store";
-
+import { useAuthStore } from "../../stores/auth.store";
 
 export default function ContentMainForMobile() {
   const { id } = useParams();
   const { getProductById } = useProductStore();
-  const selectedProduct = getProductById(Number(id));
-  const images = selectedProduct?.imgs;
+  const selectedProduct = getProductById(id);
+  const { authUser } = useAuthStore();
+  const images = selectedProduct?.images;
 
   const [current, setCurrent] = useState(0);
 
@@ -20,7 +21,6 @@ export default function ContentMainForMobile() {
   const prev = () => {
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
   };
-  
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function ContentMainForMobile() {
         {/* 1st */}
         <div className="w-full max-w-sm mx-auto h-[400px] sm:h-[500px] md:h-[600px] rounded-lg overflow-hidden relative">
           <img
-            src={images[current]}
+            src={images?.[current]}
             className="w-full h-full object-contain"
             alt={`Slide ${current + 1}`}
           />
@@ -152,9 +152,15 @@ export default function ContentMainForMobile() {
         </div>
         {/* btn */}
         <div className="w-full flex relative items-center gap-2">
+          {authUser?(
+          <button className="btn w-[300px]  bg-blue-600 text-white">
+            Add to cart
+          </button>
+          ):(
           <button className="btn w-[300px]  bg-blue-600 text-white">
             Send inquiry
           </button>
+          )}
           <span className="flex p-2 justify-center items-center border border-gray-300 rounded">
             <svg
               width="24"

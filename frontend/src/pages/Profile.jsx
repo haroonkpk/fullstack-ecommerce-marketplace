@@ -20,7 +20,7 @@ export default function Profile() {
           </button>
         </form>
         <h2 className="font-bold text-lg">
-          <span className="text-xl">user name</span>{" "}
+          <span className="text-xl">{authUser?.username}</span>{" "}
           <span className="text-sm text-gray-600">
             your favorite store
           </span>

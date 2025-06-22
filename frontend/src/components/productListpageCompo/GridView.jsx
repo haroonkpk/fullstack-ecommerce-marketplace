@@ -1,21 +1,24 @@
-import React from "react";
 import { Link } from "react-router-dom";
 export default function ListView({ products }) {
+  console.log(products);
+  
   return (
     <>
       {products.map((itm, i) => (
         <Link
-          to={`/product/${itm.id}`}
-          key={itm.id || i}
+          to={`/product/${itm._id}`}
+          key={itm._id || i}
           data-theme="light"
           className="w-full max-w-[295px] h-auto p-5 border mb-2 border-gray-300 rounded bg-white flex flex-col"
         >
           <div className="w-full max-w-[210px] h-full min-h-[210px]">
-            <img className="" src={itm.imgs?.[0]} alt={itm.name} />
+            <img className="" 
+            src={itm.images?.[0]}
+             alt={itm.name} />
           </div>
           <div>
             <span className="text-[20px]">{itm.price}</span>
-            <span>{itm.price}</span>
+            {/* <span>{itm.price}</span> */}
           </div>
           <div className="w-full h-auto flex flex-col gap-1 relative">
             <div className="flex gap-2 items-center">

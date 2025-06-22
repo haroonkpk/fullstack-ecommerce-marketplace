@@ -10,13 +10,11 @@ const tabs = [
 ];
 
 const AdminPage = () => {
-const {getAllProducts, products}=useProductStore();
+const { getAllProducts, checkAuth, products, createProduct } =
+  useProductStore();
     
-  const [activeTab, setActiveTab] = useState("create");
+  const [activeTab, setActiveTab] = useState("products");
 
-  useEffect(() => {
-    getAllProducts()
-  }, [products]);
 
   return (
     <div
@@ -36,7 +34,7 @@ const {getAllProducts, products}=useProductStore();
               className={`flex items-center px-4 py-2 mx-2 rounded-md transition-colors duration-200 ${
                 activeTab === tab.id
                   ? "bg-blue-600 text-white"
-                  : "bg-gray-500 text-gray-300 hover:bg-gray-600"
+                  : "bg-gray-200  hover:bg-gray-300"
               }`}
             >
               <tab.icon className="mr-2 h-5 w-5" />

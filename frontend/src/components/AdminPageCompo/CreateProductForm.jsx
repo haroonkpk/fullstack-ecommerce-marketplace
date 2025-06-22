@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { PlusCircle, Upload, Loader } from "lucide-react";
 import { useProductStore } from "../../stores/product.store";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const categories = [
   "tech",
@@ -14,15 +16,19 @@ const categories = [
 
 const CreateProductForm = () => {
   const { createProduct } = useProductStore();
+  const [images, setImages] = useState([]);
 
   const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
     price: "",
     category: "",
-    image: "",
+    images: null,
   });
 
+  useEffect(() => {
+    console.log(images);
+  }, [images, newProduct]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,28 +39,48 @@ const CreateProductForm = () => {
         description: "",
         price: "",
         category: "",
-        image: "",
+        images: [],
       });
     } catch {
-      console.log("error creating a product");
+      console.log("error creating a product", newProduct);
     }
   };
 
-  const handleImageChange = (e) => {
-    // const file = e.target.files[0];
-    // if (file) {
-    //   const reader = new FileReader();
+  const handleImageChange = async (e) => {
+    const files = Array.from(e.target.files);
 
-    //   reader.onloadend = () => {
-    //     setNewProduct({ ...newProduct, image: reader.result });
-    //   };
+    const base64Images = [];
 
-    //   reader.readAsDataURL(file); // base64
-    // }
+    for (let file of files) {
+      if (!file.type.startsWith("image/")) {
+        toast.error("Please select image files only");
+        return;
+      }
+
+      const base64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      base64Images.push(base64);
+    }
+
+    // Merge with existing images
+  setImages((prevImages) => {
+    const updated = [...prevImages, ...base64Images];
+
+    setNewProduct({ ...newProduct, images: updated }); // updated list
+    return updated;
+  });
   };
 
   return (
-    <div className=" shadow-lg rounded-lg p-8 mb-8 max-w-xl mx-auto">
+    <div
+      data-theme="white"
+      className=" shadow-lg rounded-lg p-8 mb-8 max-w-xl mx-auto"
+    >
       <h2 className="text-2xl font-semibold mb-6 ">Create New Product</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -70,7 +96,7 @@ const CreateProductForm = () => {
             onChange={(e) =>
               setNewProduct({ ...newProduct, name: e.target.value })
             }
-            className="mt-1 block w-full  border border-gray-600 rounded-md shadow-sm py-2
+            className="mt-1 block w-full  border border-gray-400 rounded-md shadow-sm py-2
 						 px-3  focus:outline-none focus:ring-2
 						focus:ring-blue-600 focus:border-blue-600"
             required
@@ -89,7 +115,7 @@ const CreateProductForm = () => {
               setNewProduct({ ...newProduct, description: e.target.value })
             }
             rows="3"
-            className="mt-1 block w-full  border border-gray-600 rounded-md shadow-sm
+            className="mt-1 block w-full  border border-gray-400 rounded-md shadow-sm
 						 py-2 px-3  focus:outline-none focus:ring-2 focus:ring-blue-600 
 						 focus:border-blue-600"
             required
@@ -109,7 +135,7 @@ const CreateProductForm = () => {
               setNewProduct({ ...newProduct, price: e.target.value })
             }
             step="0.01"
-            className="mt-1 block w-full  border border-gray-600 rounded-md shadow-sm 
+            className="mt-1 block w-full  border border-gray-400 rounded-md shadow-sm 
 						py-2 px-3  focus:outline-none focus:ring-2 focus:ring-blue-600
 						 focus:border-blue-600"
             required
@@ -127,16 +153,14 @@ const CreateProductForm = () => {
             onChange={(e) =>
               setNewProduct({ ...newProduct, category: e.target.value })
             }
-            className="mt-1 block w-full  border border-gray-600 rounded-md
+            className="mt-1 block w-full  border border-gray-400 rounded-md
 						 shadow-sm py-2 px-3 focus:outline-none 
 						 focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
             required
           >
-            <option  value="">
-              Select a category
-            </option>
+            <option value="">Select a category</option>
             {categories.map((category) => (
-              <option  key={category} value={category}>
+              <option key={category} value={category}>
                 {category}
               </option>
             ))}
@@ -149,17 +173,21 @@ const CreateProductForm = () => {
             id="image"
             className="sr-only"
             accept="image/*"
-            // onChange={handleImageChange}
+            onChange={handleImageChange}
           />
           <label
             htmlFor="image"
-            className="cursor-pointer  py-2 px-3 border border-gray-600 rounded-md shadow-sm text-sm leading-4 font-medium  hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
+            className="cursor-pointer  py-2 px-3 border border-gray-400 rounded-md shadow-sm text-sm leading-4 font-medium 
+             hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
           >
             <Upload className="h-5 w-5 inline-block mr-2" />
             Upload Image
           </label>
-          {newProduct.image && (
-            <span className="ml-3 text-sm text-gray-400">Image uploaded </span>
+          {newProduct.images && (
+            <span className="ml-3  text-green-600 text-sm">
+              <span className="font-lg font-semibold ">{`(${images.length})`}</span>{" "}
+              Images uploaded
+            </span>
           )}
         </div>
 

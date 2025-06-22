@@ -8,18 +8,14 @@ import { useEffect } from "react";
 
 export default function Content() {
   const { view } = useToggleStore();
-  const { id } = useParams();
-  const { getProductsByCategory, selectedCategory, products } =
-    useProductStore();
+  const { category } = useParams();
+  const { getProductsByCategory } = useProductStore();
+  const products = getProductsByCategory(category);
+  
 
-  useEffect(() => {
-    if (id !== "" && "All category") {
-      getProductsByCategory(id);
-    }
-  }, [id]);
   return (
     <div className="w-full lg:max-w-[920px] h-auto overflow-hidden">
-      <ContentTop products={selectedCategory} />
+      <ContentTop products={products} />
       <div
         className={`w-full lg:max-w-[920px] p-3 md:p-0 h-auto ${
           view === "grid"
@@ -28,9 +24,9 @@ export default function Content() {
         }`}
       >
         {view === "grid" ? (
-          <GridView products={selectedCategory} />
+          <GridView products={products} />
         ) : (
-          <ListView products={selectedCategory} />
+          <ListView products={products} />
         )}
       </div>
     </div>

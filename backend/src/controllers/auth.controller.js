@@ -26,7 +26,6 @@ export const signup = async (req, res) => {
     await user.save();
     res.status(201).json({ user, message: "User created successfully" });
   } catch (error) {
-    console.log("error in signup  ");
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
@@ -71,10 +70,8 @@ export const checkAuth = async (req, res) => {
     return res.status(401).json({ message: "Not authenticated" });
   }
   try {
-    const user = await User.findById(req.user.id).select("-password");
-    res.status(200).json({
-      user,
-    });
+    const user = req.user;
+    res.status(200).json({ user });
   } catch (error) {
     res.status(500).json({ message: "Server error in checkAuth Route" });
   }

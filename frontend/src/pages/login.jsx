@@ -13,7 +13,6 @@ const LoginPage = ({ switchToSignup }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     Login(formData);
-    console.log(formData);
     
   };
 

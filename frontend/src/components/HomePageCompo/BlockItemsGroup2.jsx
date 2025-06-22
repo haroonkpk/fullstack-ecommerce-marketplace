@@ -3,11 +3,9 @@ import { useProductStore } from "../../stores/product.store";
 import { Link } from "react-router-dom";
 
 export default function BlockItemsGroup2() {
-  const { getProductsByCategory, selectedCategory } = useProductStore();
-   useEffect(()=>{
-    getProductsByCategory("tech")
-   },[])
-  const techProducts = selectedCategory;
+  const { getFeaturedByCategory } = useProductStore();
+  const techProducts = getFeaturedByCategory("tech");
+   
   return (
     <div className="w-full max-w-[1180px] h-auto md:max-h-[257px] p-0 gap-0 border border-gray-300 rounded mt-4 bg-base-100 flex flex-col md:flex-row">
       <div className="relative max-w-[280px] md:min-h-[254px] overflow-hidden flex">

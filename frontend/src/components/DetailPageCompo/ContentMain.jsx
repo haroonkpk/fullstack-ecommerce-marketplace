@@ -1,16 +1,23 @@
 import { useCallback, useEffect, useState } from "react";
+import { useAuthStore } from "../../stores/auth.store";
 
 export default function ContentMain({ product }) {
+  const { authUser } = useAuthStore();
 
-  if (!product) return <p>Loading...</p>;
-  const [img, setImg] = useState(product?.imgs?.[0] || []);
+  if (!product)
+    return (
+      <div className="animate-pulse h-60 w-full bg-gray-200 rounded"></div>
+    );
+  const [img, setImg] = useState(product?.images?.[0] || "");
 
   const handleThumbnailClick = useCallback((itm) => {
     setImg(itm);
   }, []);
-  useEffect(()=>{
-    setImg(product?.imgs?.[0] || []);
-  },[product])
+  useEffect(() => {
+    if (product?.images?.[0]) {
+      setImg(product.images[0]);
+    }
+  }, [product]);
   return (
     <div className="hidden sm:flex w-full max-w-[1180px] h-auto container p-5 border border-gray-300 rounded bg-base-100  flex-col items-center justify-center md:grid md:grid-cols-2  lg:flex lg:flex-row lg:justify-normal gap-5">
       {/* 1st */}
@@ -23,10 +30,9 @@ export default function ContentMain({ product }) {
           />
         </div>
         <div className="w-full max-w-[895px] h-auto flex items-center sm:justify-center overflow-auto gap-1">
-          {product.imgs?.map((itm, i) => (
-            <div>
+          {product.images?.map((itm, i) => (
+            <div key={i}>
               <div
-                key={i}
                 onClick={() => handleThumbnailClick(itm)}
                 className={`w-[56px] h-[56px] border rounded overflow-hidden ${
                   img === itm ? "border-gray-500" : "border-gray-300"
@@ -63,9 +69,7 @@ export default function ContentMain({ product }) {
           </svg>
         </div>
         <div>
-          <h1 className="font-bold">
-            {product.name}
-          </h1>
+          <h1 className="font-bold">{product.name}</h1>
         </div>
         <div className="flex gap-2 items-center">
           <span>
@@ -77,32 +81,32 @@ export default function ContentMain({ product }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M72 12.0553L76.944 15L75.632 9.45L80 5.71579L74.248 5.23421L72 0L69.752 5.23421L64 5.71579L68.368 9.45L67.056 15L72 12.0553Z"
                 fill="#D5CDC5"
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M56 12.0553L60.944 15L59.632 9.45L64 5.71579L58.248 5.23421L56 0L53.752 5.23421L48 5.71579L52.368 9.45L51.056 15L56 12.0553Z"
                 fill="#FF9017"
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M40 12.0553L44.944 15L43.632 9.45L48 5.71579L42.248 5.23421L40 0L37.752 5.23421L32 5.71579L36.368 9.45L35.056 15L40 12.0553Z"
                 fill="#FF9017"
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M24 12.0553L28.944 15L27.632 9.45L32 5.71579L26.248 5.23421L24 0L21.752 5.23421L16 5.71579L20.368 9.45L19.056 15L24 12.0553Z"
                 fill="#FF9017"
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M8 12.0553L12.944 15L11.632 9.45L16 5.71579L10.248 5.23421L8 0L5.752 5.23421L0 5.71579L4.368 9.45L3.056 15L8 12.0553Z"
                 fill="#FF9017"
               />
@@ -225,7 +229,7 @@ export default function ContentMain({ product }) {
                 <path
                   d="M0.00852269 21V0.636363H7.64489C9.20928 0.636363 10.5218 0.908143 11.5824 1.4517C12.6496 1.99526 13.455 2.75757 13.9986 3.73864C14.5488 4.71307 14.8239 5.84991 14.8239 7.14915C14.8239 8.45502 14.5455 9.58854 13.9886 10.5497C13.4384 11.5043 12.6264 12.2434 11.5526 12.767C10.4787 13.2841 9.15956 13.5426 7.59517 13.5426H2.15625V10.4801H7.09801C8.01278 10.4801 8.76184 10.3542 9.34517 10.1023C9.9285 9.84375 10.3594 9.46922 10.6378 8.97869C10.9228 8.48153 11.0653 7.87168 11.0653 7.14915C11.0653 6.42661 10.9228 5.81013 10.6378 5.29972C10.3527 4.78267 9.91856 4.39157 9.33523 4.12642C8.75189 3.85464 7.99953 3.71875 7.07812 3.71875H3.69744V21H0.00852269ZM10.5284 11.7727L15.5696 21H11.4531L6.50142 11.7727H10.5284Z"
                   fill="#4CA7A7"
-                  fill-opacity="0.6"
+                  fillOpacity="0.6"
                 />
               </svg>
             </div>
@@ -279,9 +283,15 @@ export default function ContentMain({ product }) {
             </span>
             <span>Verified Seller</span>
           </div>
+          {authUser ?(
+          <button className="btn w-full bg-blue-600 text-white">
+            Add to cart
+          </button>
+          ):(
           <button className="btn w-full bg-blue-600 text-white">
             Send inquiry
           </button>
+          )}
           <button className="btn w-full  bg-white text-blue-600 border border-gray-300">
             Seller’s profile
           </button>

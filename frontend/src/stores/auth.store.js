@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 export const useAuthStore = create((set, get) => ({
   loading: false,
   authUser: null,
+  loader:true,
 
   Login: async (formData) => {
     set({ loading: true });
@@ -22,13 +23,16 @@ export const useAuthStore = create((set, get) => ({
     try {
       const res = await axiosInstance.get("/auth/checkAuth");
       set({ authUser: res.data.user });
+      set({ loader: false });
+      console.log(res.data.user);
     } catch (error) {
+      set({ authUser: null, loader: false });
       console.log("error in checkAuth :", error.message);
     }
   },
-  LogOut:()=>{
-    axiosInstance.post("/auth/logout")
-    set({authUser:null})
+  LogOut: () => {
+    axiosInstance.post("/auth/logout");
+    set({ authUser: null });
     toast.success("Successfully Logouted!");
-  }
+  },
 }));

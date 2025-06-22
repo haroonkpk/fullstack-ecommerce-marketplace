@@ -12,11 +12,11 @@ export default function Section3() {
       </div>
       <div className="flex  gap-5 items-center overflow-auto">
         {RecommendedItems.map((itm, i) => (
-          <Link to={`/product/${itm.id}`} className="flex flex-col  justify-center gap-2">
+          <Link key={i} to={`/product/${itm._id}`} className="flex flex-col  justify-center gap-2">
             <div className="w-[172px] h-[172px] bg-gray-300 rounded flex justify-center items-center">
               <img
                 className="w-[150px] h-[150px]"
-                src={itm.imgs[0]}
+                src={itm.images?.[0]}
                 alt="recommendedItem"
               />
             </div>

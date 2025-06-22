@@ -4,22 +4,22 @@ export default function ListView({ products }) {
     <>
       {products.map((itm, i) => (
         <Link
-          to={`/product/${itm.id}`}
+          to={`/product/${itm._id}`}
           key={itm.id || i}
           className="w-full h-auto overflow-hidden p-5 border mb-2 border-gray-300 rounded bg-white flex"
         >
           <div className="min-w-[98px] md:max-w-[98px] h-full lg:w-[210px] md:h-auto">
             <img
               className=""
-              src={itm.imgs?.[0]}
+              src={itm.images?.[0]}
               alt={itm.name || "Product image"}
             />
           </div>
           <div className="w-full  min-w-[196px] h-auto flex flex-col gap-1 relative">
             <div>{itm.name}</div>
-            <div>
+            <div className="flex gap-2 items-center">
               <span className="text-[20px]">{itm.price}</span>
-              <span>{itm.price}</span>
+              <span className="text-gray-500 line-through">{itm.price}</span>
             </div>
             <div className="flex gap-2 items-center">
               <span>
