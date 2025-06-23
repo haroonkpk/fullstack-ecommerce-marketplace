@@ -106,7 +106,7 @@ const LoginPage = ({ switchToSignup }) => {
               onClick={switchToSignup}
               className="font-medium cursor-pointer text-blue-400 hover:text-blue-300"
             >
-              Login here <ArrowRight className="inline h-4 w-4" />
+              Signup here <ArrowRight className="inline h-4 w-4" />
             </span>
           </p>
         </div>

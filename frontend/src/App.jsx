@@ -19,6 +19,7 @@ import Profile from "./pages/Profile";
 
 // Misc
 import { Toaster } from "react-hot-toast";
+import CartPage from "./pages/CartPage";
 
 function App() {
   const { authUser, checkAuth, loader } = useAuthStore();
@@ -27,8 +28,6 @@ function App() {
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
-
-
 
   const isAppLoading = loader || loading;
 
@@ -40,7 +39,6 @@ function App() {
     );
   }
 
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -50,16 +48,16 @@ function App() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route
             path="/admin"
-            element={authUser?.role === "admin" ? <AdminPage /> : <Navigate to="/" />}
+            element={
+              authUser?.role === "admin" ? <AdminPage /> : <Navigate to="/" />
+            }
           />
-          <Route path="/category/:category" element={<ProductListPage />} />
           <Route path="/product/:id" element={<DetailPage />} />
-          <Route
-            path="/profile"
-            element={authUser ? <Profile /> : <Navigate to="/" />}
-          />
+          <Route path="/category/:category" element={<ProductListPage />} />
+
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </main>

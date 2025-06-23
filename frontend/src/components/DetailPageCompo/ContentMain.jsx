@@ -1,8 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAuthStore } from "../../stores/auth.store";
+import { useCartStore } from "../../stores/cart.store";
+import toast from "react-hot-toast";
 
 export default function ContentMain({ product }) {
+  const { addToCart } = useCartStore();
   const { authUser } = useAuthStore();
+
+  const handleAddToCart = () => {
+    if (!authUser) {
+      toast.error("Please login to add items to your cart.");
+      return;
+    }
+    addToCart(product._id);
+  };
 
   if (!product)
     return (
@@ -283,14 +294,14 @@ export default function ContentMain({ product }) {
             </span>
             <span>Verified Seller</span>
           </div>
-          {authUser ?(
-          <button className="btn w-full bg-blue-600 text-white">
-            Add to cart
-          </button>
-          ):(
-          <button className="btn w-full bg-blue-600 text-white">
-            Send inquiry
-          </button>
+          {authUser ? (
+            <button onClick={handleAddToCart} className="btn w-full bg-blue-600 text-white">
+              Add to cart
+            </button>
+          ) : (
+            <button className="btn w-full bg-blue-600 text-white">
+              Send inquiry
+            </button>
           )}
           <button className="btn w-full  bg-white text-blue-600 border border-gray-300">
             Seller’s profile

@@ -165,7 +165,7 @@ export default function Header() {
                   onClick={() => {
                     !authUser
                       ? document.getElementById("my_modal_3").showModal()
-                      : "";
+                      : navigate("/cart");
                   }}
                   className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 "
                 >

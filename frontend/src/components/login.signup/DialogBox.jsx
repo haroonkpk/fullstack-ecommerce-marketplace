@@ -17,7 +17,7 @@ export default function DialogBox() {
   const [activeForm, setActiveForm] = useState("signup");
   return (
     <div data-theme="winter">
-      <dialog id="my_modal_3" ref={modalRef} className="modal backdrop-blur-xs">
+      <dialog id="my_modal_3" ref={modalRef} className="modal ">
         <div className="modal-box">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
