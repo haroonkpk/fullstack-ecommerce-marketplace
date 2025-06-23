@@ -6,7 +6,7 @@ export const useProductStore = create((set, get) => ({
   selectedProduct: [],
   selectedCategory: [],
   loading: false,
-  featuredFroducts: [],
+  featuredProducts: [],
   products: [],
 
   getProductById: (id) => {
@@ -64,15 +64,15 @@ export const useProductStore = create((set, get) => ({
     }));
     toast.success("product deleted");
   },
-  getFeaturedFroducts: async () => {
+  getfeaturedProducts: async () => {
     try {
       const res = await axiosInstance.get("/product/featuredProducts");
-      set({ featuredFroducts: res.data });
+      set({ featuredProducts: res.data });
     } catch (error) {
       toast.error("error.message");
     }
   },
   getFeaturedByCategory: (category) => {
-    return get().featuredFroducts.filter((p) => p.category === category);
+    return get().featuredProducts.filter((p) => p.category === category);
   },
 }));

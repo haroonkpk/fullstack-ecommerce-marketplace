@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const categories = [
   "tech",
   "cloth",
-  "shoes",
+  "interior",
   "glasses",
   "jackets",
   "suits",

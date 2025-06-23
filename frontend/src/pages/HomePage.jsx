@@ -8,24 +8,37 @@ import SectionService from "../components/HomePageCompo/SectionService";
 import SectionCountry from "../components/HomePageCompo/SectionCountry";
 import Newsletter from "../components/Newsletter";
 import NavForMobile from "../components/navbar/NavForMobile";
+import { useProductStore } from "../stores/product.store";
+import { useEffect } from "react";
 
 export default function HomePage() {
+  const { getFeaturedByCategory, getfeaturedProducts, getAllProducts } =
+    useProductStore();
+  const interiorProducts = getFeaturedByCategory("interior");
+  const techProducts = getFeaturedByCategory("tech");
+
+  useEffect(() => {
+    getfeaturedProducts();
+    getAllProducts();
+  }, []);
+  console.log(interiorProducts, techProducts);
+  
   return (
     <div
       data-theme="winter"
       className="w-full min-h-screen bg-base-200 h-auto flex flex-col items-center"
     >
-       
-      <NavForMobile/>
+      <NavForMobile />
       <SectionMain />
-      <SaleSection/>
-      <BlockItemsGroup/>
-      <BlockItemsGroup2/>
-      <SectionInquiry/>
-      <SectionRecommend/>
-      <SectionService/>
-      <SectionCountry/>
-      <Newsletter/>
+      <SaleSection />
+      <BlockItemsGroup interiorProducts={interiorProducts} />
+      <BlockItemsGroup2 techProducts={techProducts} />
+      <SectionInquiry />
+      <SectionRecommend />
+      <SectionService />
+      <SectionCountry />
+
+      <Newsletter />
     </div>
   );
 }

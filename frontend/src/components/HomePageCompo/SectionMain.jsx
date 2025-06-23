@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useAuthStore } from "../../stores/auth.store";
+import UserAction from "./UserAction";
 
 export default function SectionMain() {
-const{checkAuth,authUser}=useAuthStore();
+  const { checkAuth, authUser, LogOut } = useAuthStore();
   const items = [
     "Automobiles",
     "Clothes and wear",
@@ -53,45 +54,7 @@ const{checkAuth,authUser}=useAuthStore();
 
       {/* SECTION 3 */}
       <div className="hidden md:flex w-[215px] h-[360px]  flex-col space-y-2">
-        <div className="w-full h-[150px] relative bg-blue-100 rounded p-3 gap-2 flex flex-wrap ">
-          <div className="flex gap-2">
-            <div className="max-w-11 max-h-11 rounded-full overflow-hidden">
-              <img src="/avatar=pic1.jpg" alt="" />
-            </div>
-            <div className="h-11 flex flex-col justify-center relative  gap-y-0 leading-4 ">
-              <span className="">{authUser?.username || "Hi user"}</span>
-              {!authUser &&(<span className="">
-                let's get started
-              </span>)}
-            </div>
-          </div>
-          {!authUser ? (
-            <>
-          <button
-            onClick={() => {
-              !authUser && document.getElementById("my_modal_3").showModal();
-            }}
-            className="btn btn-sm w-full py-4 border border-gray-300 bg-blue-600 text-white rounded text-sm"
-          >
-            Join now
-          </button>
-          <button
-            onClick={() => {
-              !authUser
-                ? document.getElementById("my_modal_3").showModal()
-                : "";
-            }}
-            className="btn btn-sm w-full border border-gray-300 py-4  text-blue-600 bg-white rounded text-sm"
-          >
-            Join now
-          </button>
-          </>
-          ):(
-            <span className="w-full">
-              {authUser?.email}
-            </span>
-          )}
-        </div>
+        <UserAction/>
         <div className="w-full h-[95px] relative bg-[#F38332] text-white rounded p-3">
           <p className="w-[144px]">Get US $10 off with a new supplier</p>
         </div>

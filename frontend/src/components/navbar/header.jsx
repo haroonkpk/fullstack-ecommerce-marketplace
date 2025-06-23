@@ -1,6 +1,6 @@
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../stores/auth.store";
 
 export default function Header() {
@@ -82,6 +82,8 @@ export default function Header() {
                   onClick={() => {
                     !authUser
                       ? document.getElementById("my_modal_3").showModal()
+                      : authUser.role === "admin"
+                      ? navigate("/admin")
                       : document.getElementById("my_modal_4").showModal();
                   }}
                   className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1 "

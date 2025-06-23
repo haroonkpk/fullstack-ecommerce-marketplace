@@ -4,8 +4,7 @@ import { useEffect } from "react";
 
 export default function ProtectedRoute({ children, allowedRole }) {
   const { authUser,checkAuth, loading } = useAuthStore();
-  console.log("Loading:", loading);
-  console.log("Auth User:", authUser);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -15,8 +14,10 @@ export default function ProtectedRoute({ children, allowedRole }) {
   }
   
 
-  if (!authUser || authUser?.role !== allowedRole) {
-    return <Navigate to="/" />;
+  if (!authUser) {
+    return ;
+  }else if (authUser?.role !== allowedRole) {
+    <Navigate to='/' />
   }
 
   return children;

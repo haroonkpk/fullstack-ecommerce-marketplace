@@ -22,27 +22,27 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   const { authUser, checkAuth, loader } = useAuthStore();
-  const { getFeaturedFroducts, getAllProducts, loading } = useProductStore();
+  const { loading } = useProductStore();
 
   useEffect(() => {
     checkAuth();
-    getFeaturedFroducts();
-    getAllProducts();
-  }, []);
+  }, [checkAuth]);
+
+
 
   const isAppLoading = loader || loading;
 
   if (isAppLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <span className="text-lg font-semibold">Loading...</span>
+      <div className="w-screen h-screen flex items-center justify-center bg-[#f8f9fc]">
+        Loading...
       </div>
     );
   }
 
+
   return (
     <div className="min-h-screen flex flex-col">
-      
       <Header />
       <Navbar />
       <HeaderForMobile />
@@ -52,7 +52,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route
             path="/admin"
-            element={authUser ? <AdminPage /> : <Navigate to="/" />}
+            element={authUser?.role === "admin" ? <AdminPage /> : <Navigate to="/" />}
           />
           <Route path="/category/:category" element={<ProductListPage />} />
           <Route path="/product/:id" element={<DetailPage />} />
