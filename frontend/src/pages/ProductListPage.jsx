@@ -1,4 +1,4 @@
-import NavBreadcrumb from '../components/productListpageCompo/navBreadcrumb'
+import NavBreadcrumb from '../components/productListpageCompo/NavBreadcrumb.jsx'
 import MainCompo from '../components/productListpageCompo/mainCompo';
 import NavForMobile from '../components/navbar/NavForMobile';
 import HeaderForFilter from '../components/productListpageCompo/HeaderForFilter';
