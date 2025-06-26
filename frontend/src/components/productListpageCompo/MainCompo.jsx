@@ -1,7 +1,5 @@
-import React from 'react'
 import Sidebar from './Sidebar'
 import Content from './Content';
-import ContentTop from './ContentTop';
 
 export default function MainCompo() {
   return (
