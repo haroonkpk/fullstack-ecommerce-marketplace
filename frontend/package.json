@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.1.8",
     "axios": "^1.10.0",
     "daisyui": "^5.0.43",
+    "ecommerce-fullstack-design": "file:..",
     "lucide-react": "^0.513.0",
     "react": "^19.1.0",
     "react-confetti": "^6.4.0",

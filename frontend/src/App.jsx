@@ -70,13 +70,12 @@ function App() {
               authUser?.role === "admin" ? <AdminPage /> : <Navigate to="/" />
             }
           />
-          <Route path="/product/:id" element={<DetailPage />} />
-          <Route path="/category/:category" element={<ProductListPage />} />
-          <Route path="/search/:keyword" element={<ProductListPage />} />
+          <Route path="/product/:id?" element={<DetailPage />} />
+          <Route path="/category/:category?" element={<ProductListPage />} />
+          <Route path="/search/:keyword?" element={<ProductListPage />} />
           <Route path="/fingerprint" element={<FingerprintScan />} />
           <Route path="/success" element={<PaymentSuccess />} />
 
-          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </main>
 
