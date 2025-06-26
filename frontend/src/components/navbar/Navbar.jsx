@@ -2,6 +2,8 @@ import React from "react";
 import {CountryDropdown} from "./Dropdown.flag ";
 import LanguageDropdown from "./Dropdown.languages";
 import { Menu } from "lucide-react";
+import { Link} from "react-router-dom";
+
 
 export default function Navbar() {
   return (
@@ -12,7 +14,7 @@ export default function Navbar() {
             <button>
               <Menu />
             </button>
-            <a className="link link-hover">All category</a>
+            <Link to={"/category/AllCategory"} className="link link-hover">All category</Link>
             <a className="link link-hover">Hot offers</a>
             <a className="link link-hover">Gift boxes</a>
             <a className="link link-hover">Projects</a>
