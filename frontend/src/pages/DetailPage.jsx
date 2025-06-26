@@ -1,6 +1,6 @@
 import ContentMain from "../components/DetailPageCompo/ContentMain";
 import ContentMainForMobile from "../components/DetailPageCompo/ContentMainForMobile";
-import NavBreadcrumb from "../components/productListpageCompo/navBreadcrumb";
+import NavBreadcrumb from "../components/productListpageCompo/NavBreadcrumb";
 import SectionTwo from "../components/DetailPageCompo/SectionTwo";
 import Section3 from "../components/DetailPageCompo/Section3";
 import Banner from "../components/DetailPageCompo/Banner";
