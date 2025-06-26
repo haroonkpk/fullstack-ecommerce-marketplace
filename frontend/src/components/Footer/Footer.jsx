@@ -100,7 +100,7 @@ export default function Footer() {
           <a className="link link-hover">Categories</a>
           <a className="link link-hover">Blogs</a>
         </nav>
-        <nav>
+        <nav className="hidden md:block">
           <h6 className="font-bold">Partnership</h6>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Find store</a>

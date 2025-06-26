@@ -2,10 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 import { useAuthStore } from "../../stores/auth.store";
 import { useCartStore } from "../../stores/cart.store";
 import toast from "react-hot-toast";
+import { useSaveForLaterStore } from "../../stores/saveForLater.store";
 
 export default function ContentMain({ product }) {
   const { addToCart } = useCartStore();
   const { authUser } = useAuthStore();
+  const { addToSaveForLater } = useSaveForLaterStore();
 
   const handleAddToCart = () => {
     if (!authUser) {
@@ -13,6 +15,13 @@ export default function ContentMain({ product }) {
       return;
     }
     addToCart(product._id);
+  };
+  const handleAddToSaveForLater = () => {
+    if (!authUser) {
+      toast.error("Please login to save items for later.");
+      return;
+    }
+    addToSaveForLater(product._id);
   };
 
   if (!product)
@@ -295,7 +304,10 @@ export default function ContentMain({ product }) {
             <span>Verified Seller</span>
           </div>
           {authUser ? (
-            <button onClick={handleAddToCart} className="btn w-full bg-blue-600 text-white">
+            <button
+              onClick={handleAddToCart}
+              className="btn w-full bg-[#00B517] text-white"
+            >
               Add to cart
             </button>
           ) : (
@@ -307,7 +319,7 @@ export default function ContentMain({ product }) {
             Seller’s profile
           </button>
         </div>
-        <div className="flex gap-2">
+        <div onClick={handleAddToSaveForLater} className="flex gap-2">
           <span>
             <svg
               width="24"

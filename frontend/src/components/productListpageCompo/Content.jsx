@@ -5,17 +5,36 @@ import useToggleStore from "../../stores/Toggle.store";
 import { useParams } from "react-router-dom";
 import { useProductStore } from "../../stores/product.store";
 import { useEffect } from "react";
+import { useSaveForLaterStore } from "../../stores/saveForLater.store";
 
 export default function Content() {
   const { view } = useToggleStore();
-  const { category } = useParams();
-  const { getProductsByCategory } = useProductStore();
-  const products = getProductsByCategory(category);
-  
+  const { category, keyword } = useParams();
+  const { getAllProducts, getProductsByCategory, products } = useProductStore();
+  const { getSaveForLaterItems, addToSaveForLater } = useSaveForLaterStore();
 
+  useEffect(() => {
+    getAllProducts();
+  }, [category]);
+
+  useEffect(() => {
+    getSaveForLaterItems();
+  }, [addToSaveForLater]);
+
+  let searchedProducts = [];
+
+  //  Search logic
+  if (keyword) {
+    const searchLower = keyword.toLowerCase();
+    searchedProducts = products.filter((p) =>
+      p.name.toLowerCase().includes(searchLower)
+    );
+  } else {
+    searchedProducts = getProductsByCategory(category);
+  }
   return (
     <div className="w-full lg:max-w-[920px] h-auto overflow-hidden">
-      <ContentTop products={products} />
+      <ContentTop searchedProducts={searchedProducts} />
       <div
         className={`w-full lg:max-w-[920px] p-3 md:p-0 h-auto ${
           view === "grid"
@@ -24,9 +43,9 @@ export default function Content() {
         }`}
       >
         {view === "grid" ? (
-          <GridView products={products} />
+          <GridView searchedProducts={searchedProducts} />
         ) : (
-          <ListView products={products} />
+          <ListView searchedProducts={searchedProducts} />
         )}
       </div>
     </div>

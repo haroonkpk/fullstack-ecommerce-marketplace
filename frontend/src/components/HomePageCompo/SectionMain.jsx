@@ -17,7 +17,7 @@ export default function SectionMain() {
   ];
 
   return (
-    <div className="w-full max-w-[1180px] h-auto max-h-[400px] flex items-center p-0 gap-0 md:gap-4 md:p-5 container border border-gray-300 rounded bg-base-100">
+    <div className="w-full max-w-[1180px] h-auto md:mt-2 max-h-[400px] flex items-center p-0 gap-0 md:gap-4 md:p-5 container border border-gray-300 rounded bg-base-100">
       {/* section 1 */}
       <div className="hidden lg:block overflow-y-auto w-[250px] h-[360px] p-0">
         <ul className="menu menu-md w-full p-0">

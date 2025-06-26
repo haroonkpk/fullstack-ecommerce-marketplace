@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 export default function NavForMobile() {
   const navigate = useNavigate();
-  const items = ["All category", "tech", "cloth", "phones", "Ipads", "Ipod", "Smart watches"];
+  const items = ["AllCategory", "tech", "cloth", "phones", "Ipads", "Ipod", "Smart watches"];
   const [category, setCategory] = useState("");
   function handleChange(e) {
     setCategory(e.target.value);
   }
 
   useEffect(() => {
-    if(category && category !== "All category") {
+    if(category) {
       navigate(`/category/${category}`);
     }
   }, [category]);

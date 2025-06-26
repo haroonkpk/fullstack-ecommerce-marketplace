@@ -2,26 +2,28 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuthStore } from "./stores/auth.store";
 import { useProductStore } from "./stores/product.store";
+import { useLocation } from "react-router-dom";
 
 // Layout Components
 import Header from "./components/navbar/header";
 import HeaderForMobile from "./components/navbar/HeaderForMobile";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import DialogBox from "./components/login.signup/DialogBox";
 
 // Pages
 import HomePage from "./pages/HomePage";
 import ProductListPage from "./pages/ProductListPage";
 import DetailPage from "./pages/DetailPage";
 import AdminPage from "./pages/AdminPage";
-import Profile from "./pages/Profile";
 
 // Misc
 import { Toaster } from "react-hot-toast";
 import CartPage from "./pages/CartPage";
+import FingerprintScan from "./components/CartCompo.jsx/FingerprintScan";
+import PaymentSuccess from "./components/CartCompo.jsx/PaymentSuccess";
 
 function App() {
+  const location = useLocation();
   const { authUser, checkAuth, loader } = useAuthStore();
   const { loading } = useProductStore();
 
@@ -41,14 +43,27 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      <Navbar />
-      <HeaderForMobile />
+      {location.pathname !== "/success" &&
+      location.pathname !== "/fingerprint" ? (
+        <Header />
+      ) : (
+        ""
+      )}
+      {location.pathname !== "/cart" &&
+      location.pathname !== "/fingerprint" &&
+      location.pathname !== "/success" ? (
+        <Navbar />
+      ) : (
+        ""
+      )}
 
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route
+            path="/cart"
+            element={authUser ? <CartPage /> : <Navigate to={"/"} />}
+          />
           <Route
             path="/admin"
             element={
@@ -57,12 +72,21 @@ function App() {
           />
           <Route path="/product/:id" element={<DetailPage />} />
           <Route path="/category/:category" element={<ProductListPage />} />
+          <Route path="/search/:keyword" element={<ProductListPage />} />
+          <Route path="/fingerprint" element={<FingerprintScan />} />
+          <Route path="/success" element={<PaymentSuccess />} />
 
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </main>
 
-      <Footer />
+      {/* Footer */}
+      {location.pathname !== "/success" &&
+      location.pathname !== "/fingerprint" ? (
+        <Footer />
+      ) : (
+        ""
+      )}
       <Toaster position="top-center" />
     </div>
   );

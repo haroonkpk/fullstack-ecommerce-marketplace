@@ -1,13 +1,14 @@
 import React from 'react'
 import { Toggle } from './Toggle';
 
-export default function ContentTop({ products }) {
- 
+export default function ContentTop({ searchedProducts }) {
   return (
     <div className="hidden md:flex w-full max-w-[920px] h-auto max-h-[62px] mb-4  justify-between items-center p-5 container border border-gray-300 rounded bg-base-100">
       <div>
-        <span>{products?.length || 0} items in </span>
-        <span className="font-bold">{products?.[0]?.category} category</span>
+        <span>{searchedProducts?.length || 0} items in </span>
+        <span className="font-bold">
+          {searchedProducts?.[0]?.category} category
+        </span>
       </div>
       <div data-theme="light">
         <label className="flex items-center gap-2 cursor-pointer">

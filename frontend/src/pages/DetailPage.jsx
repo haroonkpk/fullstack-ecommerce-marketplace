@@ -18,10 +18,12 @@ export default function DetailPage() {
     window.scrollTo(0, 0);
   }, [id]);
 
+
+
   return (
     <div
       data-theme="winter"
-      className="w-full min-h-screen bg-base-200 h-auto flex flex-col items-center gap-6"
+      className="w-full min-h-screen bg-base-200 h-auto flex flex-col items-center sm:gap-6 "
     >
       {/* Breadcrumb Navigation */}
       <NavBreadcrumb />

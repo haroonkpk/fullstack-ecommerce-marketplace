@@ -4,13 +4,36 @@ import MobileDescription from "./DescForMobile";
 import { useParams } from "react-router-dom";
 import { useProductStore } from "../../stores/product.store";
 import { useAuthStore } from "../../stores/auth.store";
+import { useCartStore } from "../../stores/cart.store";
+import HeaderForOtherPages from "../navbar/HeaderForMobile";
+import { useSaveForLaterStore } from "../../stores/saveForLater.store";
 
-export default function ContentMainForMobile() {
+export default function ContentMainForMobile({ product }) {
+  const { addToSaveForLater } = useSaveForLaterStore();
   const { id } = useParams();
   const { getProductById } = useProductStore();
   const selectedProduct = getProductById(id);
   const { authUser } = useAuthStore();
   const images = selectedProduct?.images;
+
+  const { addToCart, getCartItems } = useCartStore();
+
+  useEffect(()=>{getCartItems()},[addToCart])
+
+  const handleAddToCart = () => {
+    if (!authUser) {
+      toast.error("Please login to add items to your cart.");
+      return;
+    }
+    addToCart(product._id);
+  };
+  const handleAddToSaveForLater = () => {
+    if (!authUser) {
+      toast.error("Please login to add items to your cart.");
+      return;
+    }
+    addToSaveForLater(product._id);
+  };
 
   const [current, setCurrent] = useState(0);
 
@@ -24,7 +47,8 @@ export default function ContentMainForMobile() {
 
   return (
     <>
-      <div className=" sm:hidden flex flex-col w-full max-w-[1180px] h-auto container relative p-5 border border-gray-300 rounded bg-base-100  gap-5">
+      <HeaderForOtherPages />
+      <div className=" sm:hidden mb-5 flex flex-col w-full max-w-[1180px] h-auto container relative p-5 border border-gray-300 rounded bg-base-100  gap-5">
         {/* 1st */}
         <div className="w-full max-w-sm mx-auto h-[400px] sm:h-[500px] md:h-[600px] rounded-lg overflow-hidden relative">
           <img
@@ -152,17 +176,24 @@ export default function ContentMainForMobile() {
         </div>
         {/* btn */}
         <div className="w-full flex relative items-center gap-2">
-          {authUser?(
-          <button className="btn w-[300px]  bg-blue-600 text-white">
-            Add to cart
-          </button>
-          ):(
-          <button className="btn w-[300px]  bg-blue-600 text-white">
-            Send inquiry
-          </button>
+          {authUser ? (
+            <button
+              onClick={handleAddToCart}
+              className="btn w-[300px]  bg-[#00B517] text-white"
+            >
+              Add to cart
+            </button>
+          ) : (
+            <button className="btn w-[300px]  bg-blue-600 text-white">
+              Send inquiry
+            </button>
           )}
-          <span className="flex p-2 justify-center items-center border border-gray-300 rounded">
+          <span
+            onClick={handleAddToSaveForLater}
+            className="flex p-2 justify-center items-center border border-gray-300 rounded"
+          >
             <svg
+              className="transform active:scale-150 duration-100"
               width="24"
               height="24"
               viewBox="0 0 24 24"

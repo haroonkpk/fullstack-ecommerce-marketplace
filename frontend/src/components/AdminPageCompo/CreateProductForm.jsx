@@ -27,7 +27,6 @@ const CreateProductForm = () => {
   });
 
   useEffect(() => {
-    console.log(images);
   }, [images, newProduct]);
 
   const handleSubmit = async (e) => {

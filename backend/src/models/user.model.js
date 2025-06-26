@@ -31,6 +31,18 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
+  saveForLaterItems: [
+    {
+      product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "product",
+      },
+      addedAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   Timestamp: {
     type: Date,
     default: Date.now,

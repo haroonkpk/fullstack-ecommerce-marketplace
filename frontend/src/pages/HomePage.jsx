@@ -9,6 +9,7 @@ import SectionCountry from "../components/HomePageCompo/SectionCountry";
 import Newsletter from "../components/Newsletter";
 import NavForMobile from "../components/navbar/NavForMobile";
 import { useProductStore } from "../stores/product.store";
+import HeaderForMobile from "../components/navbar/HeaderForMobile.jsx";
 import { useEffect } from "react";
 
 export default function HomePage() {
@@ -21,13 +22,13 @@ export default function HomePage() {
     getfeaturedProducts();
     getAllProducts();
   }, []);
-  console.log(interiorProducts, techProducts);
-  
+
   return (
     <div
       data-theme="winter"
       className="w-full min-h-screen bg-base-200 h-auto flex flex-col items-center"
     >
+      <HeaderForMobile/>
       <NavForMobile />
       <SectionMain />
       <SaleSection />

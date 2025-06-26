@@ -3,6 +3,7 @@ import { connectDB } from './lib/db.js';
 import dotenv from 'dotenv';
 import authRoute from './routes/auth.route.js';
 import cartRoute from './routes/cart.route.js';
+import saveForLater from './routes/saveForLater.routes.js';
 import cookieParser from 'cookie-parser';
 import productRoute from './routes/product.routes.js';
 import cors from 'cors';
@@ -20,6 +21,7 @@ app.use(cors({
 app.use("/api/auth", authRoute);
 app.use("/api/product", productRoute);
 app.use("/api/cart", cartRoute);
+app.use("/api/saveForLater",saveForLater );
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

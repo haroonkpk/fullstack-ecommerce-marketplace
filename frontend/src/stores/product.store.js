@@ -20,6 +20,9 @@ export const useProductStore = create((set, get) => ({
   },
 
   getProductsByCategory: (categoryName) => {
+    if (!categoryName || categoryName === "AllCategory") {
+      return get().products;
+    }
     return get().products.filter(
       (product) => product.category === categoryName
     );

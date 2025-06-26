@@ -9,7 +9,7 @@ const ProductsList = () => {
   // and whenever the products state changes
   useEffect(() => {
     getAllProducts();
-  }, []);
+  }, [getAllProducts]);
   return (
     <div className=" bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl mx-auto">
       <table className=" min-w-full divide-y divide-gray-300">

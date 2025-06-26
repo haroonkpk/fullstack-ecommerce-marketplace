@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
-export default function ListView({ products }) {
-  console.log(products);
-  
+import { useSaveForLaterStore } from "../../stores/saveForLater.store";
+export default function ListView({ searchedProducts }) {
+  const { addToSaveForLater } = useSaveForLaterStore();
+
   return (
     <>
-      {products.map((itm, i) => (
-        <Link
-          to={`/product/${itm._id}`}
+      {searchedProducts.map((itm, i) => (
+        <div
           key={itm._id || i}
           data-theme="light"
           className="w-full max-w-[295px] h-auto p-5 border mb-2 border-gray-300 rounded bg-white flex flex-col"
         >
-          <div className="w-full max-w-[210px] h-full min-h-[210px]">
-            <img className="" 
-            src={itm.images?.[0]}
-             alt={itm.name} />
-          </div>
+          <Link
+            to={`/product/${itm._id}`}
+            className="w-full max-w-[210px] h-full min-h-[210px]"
+          >
+            <img className="" src={itm.images?.[0]} alt={itm.name} />
+          </Link>
           <div>
             <span className="text-[20px]">{itm.price}</span>
             {/* <span>{itm.price}</span> */}
@@ -65,7 +66,10 @@ export default function ListView({ products }) {
               <span className="text-[#FF9017]">7.5</span>
             </div>
             <div className="">{itm.name}</div>
-            <div className="w-[40px] h-[40px] border border-gray-300 rounded flex justify-center items-center absolute right-0 top-[-30px]">
+            <div
+              onClick={() => addToSaveForLater(itm._id)}
+              className="w-[40px] h-[40px] cursor-pointer border border-gray-300 rounded flex justify-center items-center absolute right-0 top-[-30px]"
+            >
               <svg
                 width="24"
                 height="24"
@@ -80,7 +84,7 @@ export default function ListView({ products }) {
               </svg>
             </div>
           </div>
-        </Link>
+        </div>
       ))}
     </>
   );

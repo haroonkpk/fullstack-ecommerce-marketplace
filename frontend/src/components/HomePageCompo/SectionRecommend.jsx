@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 export default function SectionRecommend() {
   const { products } = useProductStore();
 
-  const RecommendedItems = products.slice(1, 15);
-  console.log(RecommendedItems);
+  const RecommendedItems = products.slice(1, 10);
 
   return (
     <div className="w-full max-w-[1180px] h-auto mt-7 overflow-hidden">

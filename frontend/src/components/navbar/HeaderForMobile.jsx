@@ -1,16 +1,25 @@
 import { ArrowLeft, Menu } from "lucide-react";
 import DrawerMobile from "./Drawer.mobile";
-import { useProductStore } from "../../stores/product.store";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useAuthStore } from "../../stores/auth.store";
 
 export default function HeaderForOtherPages() {
-    const location = useLocation();
-  const { selectedCategory } = useProductStore();
+  const navigate = useNavigate();
+  const { authUser } = useAuthStore();
+  const { category } = useParams();
+  const location = useLocation();
+  // Helper booleans
+  const isHome = location.pathname === "/";
+  const isSuccess = location.pathname === "/success";
+  const isCategoryPage = location.pathname.startsWith("/category");
+  const isDetailPage = location.pathname.startsWith("/product");
+  const isCartPage = location.pathname === "/cart";
+
   return (
     <>
       <div className="md:hidden navbar w-full h-auto flex items-center justify-between bg-base-100">
         <div className="flex gap-3">
-          {location.pathname === "/" ? (
+          {isHome  || isSuccess ? (
             <div className="flex items-center">
               <label
                 htmlFor="my-drawer"
@@ -20,19 +29,33 @@ export default function HeaderForOtherPages() {
               </label>
               <img src="Brand/logo-colored.jpg" alt="Brand Logo" />
             </div>
-          ) : (
+          ) : isCategoryPage ? (
             <>
               <Link to={"/"}>
                 <ArrowLeft />
               </Link>
               <span className="font-bold text-lg uppercase">
-                {selectedCategory?.[0]?.category || ""} category
+                {category || "Category"}
               </span>
+            </>
+          ) : (
+            <>
+              <Link to={"/category/AllCategory"}>
+                <ArrowLeft />
+              </Link>
+              <span className="font-bold text-lg uppercase">{"Back"}</span>
             </>
           )}
         </div>
         <ul className="w-auto h-auto menu menu-xs md:menu-xs  p-0 menu-horizontal rounded-box">
-          <li>
+          {/* cart icon */}
+          <li
+            onClick={() => {
+              !authUser
+                ? document.getElementById("my_modal_3").showModal()
+                : navigate("/cart");
+            }}
+          >
             <div className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1">
               <svg
                 width="24"
@@ -48,8 +71,18 @@ export default function HeaderForOtherPages() {
               </svg>
             </div>
           </li>
+          {/* profile icon */}
           <li>
-            <div className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1">
+            <div
+              onClick={() => {
+                !authUser
+                  ? document.getElementById("my_modal_3").showModal()
+                  : authUser.role === "admin"
+                  ? navigate("/admin")
+                  : document.getElementById("my_modal_4").showModal();
+              }}
+              className="flex flex-col bg-base-100 border-0 active:!bg-blue-600 active:!text-white gap-y-1"
+            >
               <svg
                 width="24"
                 height="24"
