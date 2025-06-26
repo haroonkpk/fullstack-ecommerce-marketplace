@@ -1,8 +1,8 @@
 import NavBreadcrumb from '../components/productListpageCompo/NavBreadcrumb.jsx'
-import MainCompo from '../components/productListpageCompo/mainCompo';
-import NavForMobile from '../components/navbar/NavForMobile';
-import HeaderForFilter from '../components/productListpageCompo/HeaderForFilter';
-import Newsletter from '../components/Newsletter';
+import MainCompo from '../components/productListpageCompo/MainCompo.jsx';
+import NavForMobile from '../components/navbar/NavForMobile.jsx';
+import HeaderForFilter from '../components/productListpageCompo/HeaderForFilter.jsx';
+import Newsletter from '../components/Newsletter.jsx';
 import HeaderForMobile from "../components/navbar/HeaderForMobile.jsx"
 
 export default function ProductListPage() {
