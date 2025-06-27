@@ -38,11 +38,11 @@ export default function CartSummary({ cartItems }) {
     <div className="w-full max-w-[1180px] relative flex flex-col md:flex-row justify-between md:gap-3 ">
       <div className="p-3 container border h-fit border-b-0  md:border-gray-300 rounded  space-y-2 bg-base-100">
         {/* Empty cart ui */}
-        {cartItems.length === 0 && <EmptyCartUI />}
+        {cartItems?.length === 0 && <EmptyCartUI />}
 
         {/* cart items for desctop*/}
         <div className="hidden sm:block">
-          {cartItems.map((item) => (
+          {cartItems?.map((item) => (
             <div
               key={item.product?._id}
               className="w-full flex justify-between gap-2 border-b border-gray-300 pb-2"

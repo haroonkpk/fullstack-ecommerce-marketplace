@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export default function OrderSummary({ cartItems }) {
   const subtotal = useMemo(() => {
     return cartItems.reduce(
-      (abtak, item) => abtak + item.product.price * item.quantity,
+      (abtak, item) => abtak + item.product?.price * item.quantity,
       0
     );
   }, [cartItems]);

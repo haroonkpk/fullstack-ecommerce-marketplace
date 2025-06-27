@@ -168,10 +168,10 @@ export default function ContentMainForMobile({ product }) {
           <span className="text-[13px]">15 sold</span>
         </div>
         {/* product name */}
-        <h1 className="font-semibold text-[18px]">{selectedProduct.name}</h1>
+        <h1 className="font-semibold text-[18px]">{selectedProduct?.name}</h1>
         {/* price */}
         <div className="flex items-center gap-2">
-          <h1 className="text-[#FA3434] font-bold">{selectedProduct.price}</h1>
+          <h1 className="text-[#FA3434] font-bold">${selectedProduct?.price}</h1>
           <p className="text-[13px]">(50-100 pcs)</p>
         </div>
         {/* btn */}

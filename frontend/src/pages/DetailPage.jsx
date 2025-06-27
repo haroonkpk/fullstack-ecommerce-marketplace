@@ -11,15 +11,16 @@ import { useProductStore } from "../stores/product.store";
 export default function DetailPage() {
   const { id } = useParams();
 
-  const { getProductById } = useProductStore();
+  const { getAllProducts, getProductById } = useProductStore();
   const selectedProduct = getProductById(id);
   // useState for scrolling to top when product changes
   useEffect(() => {
+     getAllProducts();
+  }, [getProductById]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
-
-
-
   return (
     <div
       data-theme="winter"

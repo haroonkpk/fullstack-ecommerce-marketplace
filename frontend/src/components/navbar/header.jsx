@@ -72,7 +72,7 @@ export default function Header() {
                 <option value="/category/AllCategory">All category</option>
                 <option value="/category/tech">tech</option>
                 <option value="/category/cloth">cloth</option>
-                <option value="/category/action">Action</option>
+                <option value="/category/interior">interior</option>
               </select>
               <div className="indicator">
                 <span className="indicator-item "></span>

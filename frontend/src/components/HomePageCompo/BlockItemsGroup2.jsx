@@ -3,6 +3,7 @@ import { useProductStore } from "../../stores/product.store";
 import { Link } from "react-router-dom";
 
 export default function BlockItemsGroup2({ techProducts }) {
+  const getShortTitle = (name) => name?.split(" ")[0];
 
 
   return (
@@ -32,10 +33,12 @@ export default function BlockItemsGroup2({ techProducts }) {
             key={itm._id}
             className="h-[127px] p-4 leading-10 relative cursor-pointer border-l border-t border-gray-300"
           >
-            <h1 className="text-black">{itm.name}</h1>
+            <h1 className="text-black text-sm">
+              {<p>{getShortTitle(itm?.name)}</p>}
+            </h1>
             <div className="leading-tight">
               <p className="w-[97px] text-[13px]">From</p>
-              <p className="w-[97px] text-[13px]">{itm.price}</p>
+              <p className="w-[97px] text-[13px]">${itm.price}</p>
             </div>
             <div className="w-[82px] h-[82px]  absolute bottom-0 right-0">
               <img src={itm.images?.[0]} alt={itm.name} />

@@ -4,8 +4,14 @@ import NavForMobile from '../components/navbar/NavForMobile.jsx';
 import HeaderForFilter from '../components/productListpageCompo/HeaderForFilter.jsx';
 import Newsletter from '../components/Newsletter.jsx';
 import HeaderForMobile from "../components/navbar/HeaderForMobile.jsx"
+import { useProductStore } from '../stores/product.store.js';
+import { useEffect } from 'react';
 
 export default function ProductListPage() {
+  const { getAllProducts } = useProductStore();
+  useEffect(()=>{
+    getAllProducts()
+  },[])
   return (
     <div
       data-theme="winter"

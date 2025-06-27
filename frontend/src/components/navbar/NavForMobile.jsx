@@ -19,8 +19,18 @@ export default function NavForMobile() {
   return (
     <div className="md:hidden w-full bg-white flex flex-col gap-3 p-3 shadow-sm mb-0.5">
       <label className="input w-full">
-        <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor">
+        <svg
+          className="h-[1em] opacity-50"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <g
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeWidth="2.5"
+            fill="none"
+            stroke="currentColor"
+          >
             <circle cx="11" cy="11" r="8"></circle>
             <path d="m21 21-4.3-4.3"></path>
           </g>
@@ -29,7 +39,7 @@ export default function NavForMobile() {
       </label>
 
       <div>
-        <form className="filter flex overflow-x-auto flex-nowrap gap-2">
+        <form className="filter flex overflow-x-auto scrollbar-hide flex-nowrap gap-2">
           <input className="" type="reset" value="×" />
           {items.map((itm, i) => (
             <input

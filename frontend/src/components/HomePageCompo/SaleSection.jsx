@@ -41,8 +41,7 @@ export default function SaleSection() {
       </div>
       <div className="w-full max-w-[895px] h-auto flex items-center overflow-auto">
         {saleItem.map((itm, i) => (
-          <Link
-            to={`/product/${itm.id}`}
+          <div
             key={i}
             className="flex flex-col items-center w-[179px] cursor-pointer border-l border-t border-gray-300 h-[235px] gap-2"
           >
@@ -58,7 +57,7 @@ export default function SaleSection() {
             >
               {itm.discount}
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

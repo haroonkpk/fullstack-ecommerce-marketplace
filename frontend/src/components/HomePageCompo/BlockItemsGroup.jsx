@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { useProductStore } from "../../stores/product.store";
 import { Link } from "react-router-dom";
 
 export default function BlockItemsGroup({ interiorProducts }) {
+  const getShortTitle = (name) => name?.split(" ")[0];
   return (
     <div className="w-full max-w-[1180px] h-auto md:max-h-[257px] p-0 gap-0 border border-gray-300 rounded mt-4 bg-base-100 flex flex-col md:flex-row">
       <div className="max-w-[280px] md:min-h-[254px] overflow-hidden  flex relative ">
@@ -29,7 +28,7 @@ export default function BlockItemsGroup({ interiorProducts }) {
             key={itm._id || i}
             className="h-[127px] p-4 leading-10 relative cursor-pointer border-l border-t border-gray-300"
           >
-            <h1 className="text-black">{itm.name}</h1>
+            <h1 className="text-black">{getShortTitle(itm.name)}</h1>
             <div className="leading-tight">
               <p className="w-[97px] text-[13px]">From</p>
               <p className="w-[97px] text-[13px]">{itm.price}</p>
