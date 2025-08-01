@@ -1,4 +1,4 @@
-https://brand-e-commerce.up.railway.app/
+https://www.brand-e-commerce.up.railway.app/
 
 # FullStack-eCommerce-marketplace
 
