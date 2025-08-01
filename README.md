@@ -34,13 +34,25 @@ NODE_ENV=development
 ## Run this app locally
 ```run
 
- npm run build
+ cd frontend
+ npm install
+
+```
+```run
+
+ cd backend
+ npm install
 
 ```
 
 ### Start the app
 ```
+ cd frontend
+ npm run dev
 
- npm run start
+```
+```
+ cd backend
+ npm run dev
 
 ```
